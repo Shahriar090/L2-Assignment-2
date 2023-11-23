@@ -7,8 +7,11 @@ import cors from "cors";
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Hello World! from planet earth");
-});
+const getAController = (req: Request, res: Response) => {
+  const a = 50;
+  res.send(a);
+};
+
+app.get("/", getAController);
 
 export default app;

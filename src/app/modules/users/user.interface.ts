@@ -23,7 +23,7 @@ export type Address = {
   country: string;
 };
 
-export type User = {
+export type UserDetails = {
   userId: number;
   userName: string;
   password: string;
