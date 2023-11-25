@@ -24,7 +24,37 @@ const getUserWithFields = async () => {
   }
 };
 
+const getUserById = async (userId: number) => {
+  try {
+    const user = await UserModel.findOne({ userId });
+    return user;
+  } catch (error) {
+    throw new Error("Error fetching user from the database");
+  }
+};
+
+// update user
+
+const updateUser = async (userId: number, updateUser: UserDetails) => {
+  try {
+    const user = await UserModel.findOneAndUpdate({ userId }, updateUser, {
+      new: true,
+    });
+    if (!user) {
+      throw new Error("User not found");
+    }
+    const updateUserWithoutPass = {
+      ...user.toObject(),
+      password: undefined,
+    };
+    return updateUserWithoutPass;
+  } catch (error) {
+    throw new Error("User update failed");
+  }
+};
 export const userFromService = {
   createUserIntoDb,
   getUserWithFields,
+  getUserById,
+  updateUser,
 };

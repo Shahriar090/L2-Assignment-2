@@ -1,4 +1,4 @@
-import { model, connect, Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 import { Address, FullName, Orders, UserDetails } from "./user.interface";
 
 // sub schema

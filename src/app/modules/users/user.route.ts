@@ -4,5 +4,6 @@ const router = express.Router();
 
 router.post("/api/users", userFromController.createUser);
 router.get("/api/users", userFromController.getUsersWithFields);
-
+router.get("/api/users/:userId", userFromController.getUserById);
+router.put("/api/users/:userId", userFromController.updateUserById);
 export const routerFromUserRoute = router;
