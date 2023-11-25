@@ -1,5 +1,3 @@
-import { Schema, model, connect } from "mongoose";
-
 // sub types
 export type FullName = {
   firstName: string;
