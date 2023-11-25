@@ -65,29 +65,6 @@ const getUserById = async (req: Request, res: Response) => {
 
 // update user
 
-/* const updateUserById = async (req: Request, res: Response) => {
-  try {
-    const userId = parseInt(req.params.userId, 10);
-    const updatedUser = req.body.updatedUserData;
-
-    const updatedUserData = await userFromService.updateUserById(
-      userId,
-      updatedUser
-    );
-
-    res.status(200).json({
-      success: true,
-      message: "User updated successfully!",
-      data: updatedUserData,
-    });
-  } catch (error) {
-    res.status(404).json({
-      success: false,
-      message: error.message,
-      data: null,
-    });
-  }
-}; */
 const updateUserById = async (req: Request, res: Response) => {
   try {
     const userId = parseInt(req.params.userId, 30);
@@ -108,9 +85,29 @@ const updateUserById = async (req: Request, res: Response) => {
     });
   }
 };
+
+const deleteUserById = async (req: Request, res: Response) => {
+  try {
+    const userId = parseInt(req.params.userId, 10);
+    await userFromService.deleteUserById(userId);
+
+    res.status(200).json({
+      success: true,
+      message: "User deleted successfully!",
+      data: null,
+    });
+  } catch (error) {
+    res.status(404).json({
+      success: false,
+      message: "Delete failed",
+      data: null,
+    });
+  }
+};
 export const userFromController = {
   createUser,
   getUsersWithFields,
   getUserById,
   updateUserById,
+  deleteUserById,
 };

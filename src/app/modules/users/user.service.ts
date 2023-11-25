@@ -1,6 +1,7 @@
 import { UserDetails } from "./user.interface";
 import { UserModel } from "./user.model";
 
+// create user
 const createUserIntoDb = async (user: UserDetails) => {
   const result = await UserModel.create(user);
   return result;
@@ -23,6 +24,8 @@ const getUserWithFields = async () => {
     throw new Error("Error fetching users from database");
   }
 };
+
+// get user by id
 
 const getUserById = async (userId: number) => {
   try {
@@ -52,9 +55,24 @@ const updateUser = async (userId: number, updateUser: UserDetails) => {
     throw new Error("User update failed");
   }
 };
+
+// delete user
+
+const deleteUserById = async (userId: number) => {
+  try {
+    const deleteUser = await UserModel.findOneAndDelete({ userId });
+    if (!deleteUser) {
+      throw new Error("User not found");
+    }
+    return null;
+  } catch (error) {
+    throw new Error("Deleting user failed");
+  }
+};
 export const userFromService = {
   createUserIntoDb,
   getUserWithFields,
   getUserById,
   updateUser,
+  deleteUserById,
 };
