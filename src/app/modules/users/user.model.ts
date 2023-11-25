@@ -1,15 +1,12 @@
-import { model, Schema } from "mongoose";
-import { Address, FUllName, Order, UserDetails } from "./user.interface";
+import { model, connect, Schema } from "mongoose";
+import { Address, FullName, Orders, UserDetails } from "./user.interface";
 
-// sub schemas
+// sub schema
 
-// schema for full name
-const fullNameSchema = new Schema<FUllName>({
+const fullNameSchema = new Schema<FullName>({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
 });
-
-// schema for address
 
 const addressSchema = new Schema<Address>({
   street: { type: String, required: true },
@@ -17,9 +14,7 @@ const addressSchema = new Schema<Address>({
   country: { type: String, required: true },
 });
 
-//   schema for orders
-
-const ordersSchema = new Schema<Order>({
+const userOrdersSchema = new Schema<Orders>({
   productName: { type: String, required: true },
   price: { type: Number, required: true },
   quantity: { type: Number, required: true },
@@ -27,19 +22,16 @@ const ordersSchema = new Schema<Order>({
 
 const userSchema = new Schema<UserDetails>({
   userId: { type: Number, required: true, unique: true },
-  userName: { type: String, required: true, unique: true },
-  password: { type: String, required: true, unique: true },
+  username: { type: String, required: true },
+  password: { type: String, required: true },
   fullName: fullNameSchema,
-  age: { type: Number },
+  age: { type: Number, required: true },
   email: { type: String, required: true },
   isActive: { type: Boolean },
-  hobbies: [{ type: String }],
+  hobbies: { type: [String] },
   address: addressSchema,
-  orders: ordersSchema,
+  userOrders: { type: [userOrdersSchema], default: [] },
 });
 
-// creating model
-
-const UserModel = model<UserDetails>("User", userSchema);
-
-export default UserModel;
+// model
+export const UserModel = model<UserDetails>("User", userSchema);

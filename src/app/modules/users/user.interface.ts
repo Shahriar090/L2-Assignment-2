@@ -1,37 +1,33 @@
 import { Schema, model, connect } from "mongoose";
 
-// interface
-// i am using type here
-
-// type for full name
-export type FUllName = {
+// sub types
+export type FullName = {
   firstName: string;
   lastName: string;
 };
 
-// type for orders
-export type Order = {
-  productName: string;
-  price: number;
-  quantity: number;
-};
-
-// type for address
 export type Address = {
   street: string;
   city: string;
   country: string;
 };
 
+export type Orders = {
+  productName: string;
+  price: number;
+  quantity: number;
+};
+
+// type declaration
 export type UserDetails = {
   userId: number;
-  userName: string;
+  username: string;
   password: string;
-  fullName: FUllName;
+  fullName: FullName;
   age: number;
   email: string;
   isActive: boolean;
   hobbies: string[];
   address: Address;
-  orders: Order[];
+  userOrders: Orders[];
 };
