@@ -1,10 +1,10 @@
 # Level Two Assignment Two :
 
-## Description : This project is a Node Js. Express Js application with Typescript and MongoDb.This project is basically a small Create, Read, Update and Delete (CRUD) project. Main feature of this project is creating user with updating and deleting options and also user can make orders.These are the main features of this small project.
+## Description : This project is a Node.js and Express.js application with TypeScript and MongoDB. The main features include the ability to create, read, update, and delete (CRUD) users. Users also have options for updating and deleting their profiles. Additionally, the application supports order creation by users.
 
 ## Prerequisites
 
-Mainly we will need Node Js. in our computer.In this case i used TypeScript so before using this application we will need to convert our Ts into Js. I did this by using some script in package.json file.
+Mainly, we will need Node.js on our computer. In this case, I used TypeScript. Before using this application, we will need to convert our TypeScript code into JavaScript. I achieved this by using a script in the package.json file.
 
 ## Installation
 
